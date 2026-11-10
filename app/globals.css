@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  overflow-y: scroll !important;
+  scroll-behavior: smooth;
+  scrollbar-width: auto;
+  scrollbar-color: #0E1E38 #F1F5F9;
+}
+
+@layer base {
+  :root {
+    --background: 240 10% 98%;
+    --foreground: 222 47% 11%;
+  }
+
+  body {
+    @apply bg-brand-warm-white text-slate-800 antialiased selection:bg-brand-orange selection:text-white;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+}
+
+/* Custom Scrollbar - prominent, clean, and easily draggable */
+::-webkit-scrollbar {
+  width: 14px !important;
+  height: 14px !important;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9 !important;
+  border-left: 1px solid #CBD5E1 !important;
+}
+::-webkit-scrollbar-thumb {
+  background: #0E1E38 !important;
+  border-radius: 6px !important;
+  border: 2px solid #F1F5F9 !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF6B00 !important;
+}
+
+/* Subtle Card Hover Effects */
+.card-hover-effect {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-hover-effect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -3px rgba(14, 30, 56, 0.1);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
