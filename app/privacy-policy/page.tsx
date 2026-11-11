@@ -3,9 +3,28 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Download, HelpCircle, ArrowRight, CheckCircle2, Shield, MapPin, CreditCard, Smartphone, Server, UserCheck, FileText, RefreshCw } from 'lucide-react';
+import { getBreadcrumbSchema } from '@/lib/seo';
+import { SITE_URL } from '@/lib/site';
 
 export default function PrivacyPolicyPage() {
   const [downloadSuccess, setDownloadSuccess] = useState(false);
+
+  const breadcrumbJsonLd = getBreadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Privacy Policy', path: '/privacy-policy' },
+  ]);
+
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'GO-PARTNER Privacy Policy',
+    url: `${SITE_URL}/privacy-policy`,
+    description:
+      'GO-PARTNER Privacy Policy and Data Protection standards under the Information Technology Act 2000.',
+    publisher: {
+      '@id': `${SITE_URL}/#organization`,
+    },
+  };
 
   const handleDownload = () => {
     const content = `GO PARTNER - PRIVACY POLICY
@@ -85,6 +104,14 @@ Visit https://gopartner.in/privacy-policy for the latest version of this documen
 
   return (
     <div className="w-full flex flex-col bg-brand-light-bg/40">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
 
       {/* HERO HEADER */}
       <section className="bg-white border-b border-slate-200 py-10 lg:py-14">
@@ -92,16 +119,16 @@ Visit https://gopartner.in/privacy-policy for the latest version of this documen
           <nav className="flex items-center space-x-2 text-xs text-slate-500 mb-3" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-brand-navy">Home</Link>
             <span>/</span>
-            <span className="text-slate-800 font-medium">Legal</span>
+            <span className="text-slate-800 font-medium">Privacy Policy</span>
           </nav>
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
               <h1 className="text-3xl sm:text-4xl font-black text-brand-navy font-heading tracking-tight">
-                Legal &amp; Compliance
+                Privacy Policy
               </h1>
               <p className="text-sm sm:text-base text-slate-600 mt-1">
-                Transparency builds stronger partnerships.
+                Transparency builds stronger partnerships. Data privacy &amp; compliance standards.
               </p>
             </div>
 

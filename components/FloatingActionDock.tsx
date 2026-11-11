@@ -109,7 +109,7 @@ export default function FloatingActionDock() {
 
       {/* 2. Scroll to Top Floating Button (Bottom) */}
       <div className="relative flex items-center">
-        {activeTooltip === 'scroll' && (
+        {activeTooltip === 'scroll' && scrolled && (
           <span className="pointer-events-none hidden sm:block absolute right-full mr-3 px-2.5 py-1 bg-slate-900 text-white text-xs font-semibold rounded-md shadow-md whitespace-nowrap animate-in fade-in slide-in-from-right-1">
             Back to Top
           </span>
@@ -121,16 +121,33 @@ export default function FloatingActionDock() {
           title="Back to Top"
           onMouseEnter={() => setActiveTooltip('scroll')}
           onMouseLeave={() => setActiveTooltip(null)}
-          style={{
-            backgroundColor: '#0E1E38',
-            borderColor: '#FF6B00',
-            color: '#FF6B00',
-          }}
-          className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full border-2 shadow-lg hover:shadow-2xl hover:!bg-[#FF6B00] hover:!text-white flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer ${
-            scrolled ? 'opacity-100 shadow-orange-500/20' : 'opacity-90'
+          className={`group relative w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-[#FF5500] via-brand-orange to-[#FF8533] border-2 border-white/50 hover:border-white shadow-lg shadow-brand-orange/35 hover:shadow-2xl hover:shadow-brand-orange/60 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 active:scale-95 active:translate-y-0 cursor-pointer overflow-hidden ${
+            scrolled
+              ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto'
+              : 'opacity-0 translate-y-4 scale-75 pointer-events-none'
           }`}
         >
-          <ArrowUp size={22} strokeWidth={2.5} className="w-5 h-5 stroke-[2.5] pointer-events-none" />
+          {/* Subtle ambient pulse ring when active */}
+          {scrolled && (
+            <span
+              className="absolute inset-0 rounded-full bg-brand-orange animate-ping opacity-25 pointer-events-none -z-10"
+              aria-hidden="true"
+            />
+          )}
+
+          {/* Cool dual-arrow lift-off micro-animation */}
+          <div className="relative w-5 h-5 overflow-hidden flex flex-col items-center justify-center pointer-events-none">
+            <ArrowUp
+              size={20}
+              strokeWidth={2.75}
+              className="w-5 h-5 text-white stroke-[2.75] transition-transform duration-300 ease-out group-hover:-translate-y-7"
+            />
+            <ArrowUp
+              size={20}
+              strokeWidth={2.75}
+              className="w-5 h-5 text-white stroke-[2.75] absolute transition-transform duration-300 ease-out translate-y-7 group-hover:translate-y-0"
+            />
+          </div>
         </a>
       </div>
     </aside>

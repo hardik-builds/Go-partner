@@ -1,7 +1,20 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Truck, ArrowLeft, Home } from 'lucide-react';
+import { Truck, Home } from 'lucide-react';
+import BackButton from '@/components/BackButton';
+
+export const metadata: Metadata = {
+  title: '404 - Page Not Found',
+  description: 'The requested route or logistics resource could not be found on GO-PARTNER.',
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
+};
 
 export default function NotFound() {
   return (
@@ -46,13 +59,7 @@ export default function NotFound() {
             <Home size={18} />
             Back to Home
           </Link>
-          <button
-            onClick={() => window.history.back()}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 text-white font-semibold rounded-md border border-white/20 hover:bg-white/20 transition-colors duration-200"
-          >
-            <ArrowLeft size={18} />
-            Go Back
-          </button>
+          <BackButton />
         </div>
 
         {/* Quick Links */}

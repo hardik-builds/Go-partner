@@ -16,8 +16,16 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { GOOGLE_PLAY_URL } from '@/lib/site';
+import { getBreadcrumbSchema, getServicesSchema } from '@/lib/seo';
+import ScrollReveal from '@/components/ScrollReveal';
 
 export default function ServicesPage() {
+  const breadcrumbJsonLd = getBreadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/services' },
+  ]);
+  const servicesJsonLd = getServicesSchema();
+
   const services = [
     {
       id: 'full-truckload',
@@ -137,12 +145,20 @@ export default function ServicesPage() {
 
   return (
     <div className="w-full flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
+      />
       {/* 1. HERO SECTION (Matching go_partner_elevated_services.jpg & v4 refined) */}
       <section className="bg-gradient-to-b from-white via-slate-50 to-white py-12 lg:py-20 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Content (lg: 6 cols) */}
-            <div className="lg:col-span-6 space-y-5">
+            <ScrollReveal direction="up" delay={0.04} distance={14} className="lg:col-span-6 space-y-5">
               <span className="text-xs font-bold text-brand-orange uppercase tracking-widest block">
                 Our Services
               </span>
@@ -161,7 +177,7 @@ export default function ServicesPage() {
                   href={GOOGLE_PLAY_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-brand-orange hover:bg-brand-orange-hover text-white text-xs font-bold uppercase tracking-wider rounded-md transition-all shadow-xs"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-brand-orange hover:bg-brand-orange-hover text-white text-xs font-bold uppercase tracking-wider rounded-md transition-all shadow-xs btn-interactive"
                 >
                   <span>Book in the App</span>
                   <ArrowRight className="w-4 h-4" />
@@ -169,15 +185,15 @@ export default function ServicesPage() {
 
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-white hover:bg-slate-50 text-brand-navy border border-slate-300 text-xs font-bold uppercase tracking-wider rounded-md transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-white hover:bg-slate-50 text-brand-navy border border-slate-300 text-xs font-bold uppercase tracking-wider rounded-md transition-colors btn-interactive"
                 >
                   <span>Speak with Dispatch</span>
                 </Link>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Right Hero Image Card (lg: 6 cols) */}
-            <div className="lg:col-span-6">
+            <ScrollReveal direction="up" delay={0.14} distance={14} className="lg:col-span-6">
               <div className="relative rounded-lg overflow-hidden border border-slate-200 shadow-card bg-slate-900 group">
                 <div className="relative w-full h-[320px] sm:h-[380px]">
                   <Image
@@ -200,7 +216,7 @@ export default function ServicesPage() {
                   </span>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -221,76 +237,76 @@ export default function ServicesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-            {services.map((service) => (
-              <div
-                key={service.id}
-                className="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-subtle flex flex-col justify-between card-hover-effect h-full"
-              >
-                <div className="flex flex-col flex-grow">
-                  {/* Consistent Service Image Frame: 16/9 aspect ratio */}
-                  <div className="relative aspect-[16/9] w-full bg-slate-100 overflow-hidden">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover object-center"
-                    />
-                  </div>
-
-                  {/* Card Content with consistent alignment */}
-                  <div className="p-6 flex flex-col flex-grow">
-                    <span className="h-5 flex items-center text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">
-                      {service.tagline}
-                    </span>
-                    <h3 className="h-7 flex items-center text-lg font-bold text-brand-navy mb-2 line-clamp-1">
-                      {service.title}
-                    </h3>
-                    <p className="h-[60px] text-xs text-slate-600 leading-relaxed mb-4 line-clamp-3">
-                      {service.description}
-                    </p>
-
-                    {/* Specifications Box */}
-                    <div className="bg-slate-50 rounded-md p-3 border border-slate-100 space-y-2 mb-4">
-                      {service.specs.map((spec, idx) => {
-                        const Icon = spec.icon;
-                        return (
-                          <div key={idx} className="flex items-center justify-between text-[11px] h-5">
-                            <span className="text-slate-500 flex items-center gap-1.5">
-                              <Icon className="w-3.5 h-3.5 text-brand-blue flex-shrink-0" />
-                              {spec.label}:
-                            </span>
-                            <span className="font-semibold text-brand-navy">{spec.value}</span>
-                          </div>
-                        );
-                      })}
+            {services.map((service, idx) => (
+              <ScrollReveal key={service.id} delay={idx * 0.08} className="h-full">
+                <div className="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-subtle flex flex-col justify-between card-hover-effect h-full">
+                  <div className="flex flex-col flex-grow">
+                    {/* Consistent Service Image Frame: 16/9 aspect ratio */}
+                    <div className="relative aspect-[16/9] w-full bg-slate-100 overflow-hidden">
+                      <Image
+                        src={service.image}
+                        alt={`${service.title} - GO-PARTNER Freight Logistics Services`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover object-center"
+                        loading="lazy"
+                      />
                     </div>
 
-                    {/* Features list */}
-                    <ul className="space-y-1.5 text-xs text-slate-600 mb-6 flex-grow min-h-[96px]">
-                      {service.features.map((feature, fIdx) => (
-                        <li key={fIdx} className="flex items-start gap-1.5">
-                          <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    {/* Card Content with consistent alignment */}
+                    <div className="p-6 flex flex-col flex-grow">
+                      <span className="h-5 flex items-center text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">
+                        {service.tagline}
+                      </span>
+                      <h3 className="h-7 flex items-center text-lg font-bold text-brand-navy mb-2 line-clamp-1">
+                        {service.title}
+                      </h3>
+                      <p className="h-[60px] text-xs text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                        {service.description}
+                      </p>
+
+                      {/* Specifications Box */}
+                      <div className="bg-slate-50 rounded-md p-3 border border-slate-100 space-y-2 mb-4">
+                        {service.specs.map((spec, specIdx) => {
+                          const Icon = spec.icon;
+                          return (
+                            <div key={specIdx} className="flex items-center justify-between text-[11px] h-5">
+                              <span className="text-slate-500 flex items-center gap-1.5">
+                                <Icon className="w-3.5 h-3.5 text-brand-blue flex-shrink-0" />
+                                {spec.label}:
+                              </span>
+                              <span className="font-semibold text-brand-navy">{spec.value}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      {/* Features list */}
+                      <ul className="space-y-1.5 text-xs text-slate-600 mb-6 flex-grow min-h-[96px]">
+                        {service.features.map((feature, fIdx) => (
+                          <li key={fIdx} className="flex items-start gap-1.5">
+                            <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Footer Action pinned to bottom */}
+                  <div className="px-6 pb-6 pt-0 mt-auto">
+                    <a
+                      href={GOOGLE_PLAY_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-brand-orange hover:bg-brand-orange-hover text-white text-xs font-bold uppercase tracking-wider rounded-md shadow-xs transition-colors btn-interactive"
+                    >
+                      <span>Book in the App</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
                   </div>
                 </div>
-
-                {/* Footer Action pinned to bottom */}
-                <div className="px-6 pb-6 pt-0 mt-auto">
-                  <a
-                    href={GOOGLE_PLAY_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-brand-orange hover:bg-brand-orange-hover text-white text-xs font-bold uppercase tracking-wider rounded-md shadow-xs transition-colors"
-                  >
-                    <span>Book in the App</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

@@ -4,14 +4,14 @@ import React from 'react';
 import Link from 'next/link';
 import { Phone, Mail, MapPin, MessageSquare, ArrowUpRight } from 'lucide-react';
 import Logo from './Logo';
-import { GOOGLE_PLAY_URL } from '@/lib/site';
+import { GOOGLE_PLAY_URL, ASH_SOLUTION_URL } from '@/lib/site';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-brand-navy text-white pt-16 pb-10 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-brand-navy text-white pt-16 pb-0 border-t border-slate-800 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-slate-800/80">
           {/* Col 1: Company Information & Logo (lg: 4 cols) */}
           <div className="lg:col-span-4 space-y-4">
@@ -39,7 +39,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/"
-                  className="hover:text-brand-orange transition-colors inline-flex items-center gap-1"
+                  className="hover:text-brand-orange hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1"
                 >
                   Home
                 </Link>
@@ -47,7 +47,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/about"
-                  className="hover:text-brand-orange transition-colors inline-flex items-center gap-1"
+                  className="hover:text-brand-orange hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1"
                 >
                   About Us
                 </Link>
@@ -55,7 +55,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services"
-                  className="hover:text-brand-orange transition-colors inline-flex items-center gap-1"
+                  className="hover:text-brand-orange hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1"
                 >
                   Services
                 </Link>
@@ -63,7 +63,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="hover:text-brand-orange transition-colors inline-flex items-center gap-1"
+                  className="hover:text-brand-orange hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1"
                 >
                   Contact Us
                 </Link>
@@ -71,7 +71,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/privacy-policy"
-                  className="hover:text-brand-orange transition-colors inline-flex items-center gap-1"
+                  className="hover:text-brand-orange hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1"
                 >
                   Privacy Policy
                 </Link>
@@ -79,7 +79,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/terms-and-conditions"
-                  className="hover:text-brand-orange transition-colors inline-flex items-center gap-1"
+                  className="hover:text-brand-orange hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1"
                 >
                   Terms & Conditions
                 </Link>
@@ -87,7 +87,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/refund"
-                  className="hover:text-brand-orange transition-colors inline-flex items-center gap-1"
+                  className="hover:text-brand-orange hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1"
                 >
                   Cancellation & Refunds
                 </Link>
@@ -164,7 +164,7 @@ export default function Footer() {
                 href={GOOGLE_PLAY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-3.5 py-2 bg-slate-900/90 hover:bg-slate-800 border border-slate-700 rounded-md transition-colors w-full group"
+                className="flex items-center gap-3 px-3.5 py-2 bg-slate-900/90 hover:bg-slate-800 border border-slate-700 rounded-md transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md w-full group"
                 aria-label="Get it on Google Play"
               >
                 <svg width="20" height="20" className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
@@ -205,7 +205,7 @@ export default function Footer() {
                   href="https://instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-md bg-slate-800 hover:bg-brand-orange flex items-center justify-center text-slate-300 hover:text-white transition-colors"
+                  className="w-8 h-8 rounded-md bg-slate-800 hover:bg-brand-orange flex items-center justify-center text-slate-300 hover:text-white transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
                   aria-label="Instagram"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -218,7 +218,7 @@ export default function Footer() {
                   href="https://facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-md bg-slate-800 hover:bg-brand-orange flex items-center justify-center text-slate-300 hover:text-white transition-colors"
+                  className="w-8 h-8 rounded-md bg-slate-800 hover:bg-brand-orange flex items-center justify-center text-slate-300 hover:text-white transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
                   aria-label="Facebook"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -231,7 +231,7 @@ export default function Footer() {
                   href="https://wa.me/919820011223"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-md bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-300 hover:text-white transition-colors"
+                  className="w-8 h-8 rounded-md bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-300 hover:text-white transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
                   aria-label="WhatsApp"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -270,6 +270,43 @@ export default function Footer() {
             >
               Cancellation & Refunds
             </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Dedicated Developer Banner: Powered by ASH Solutions */}
+      <div className="relative w-full bg-gradient-to-r from-[#070F1E] via-[#0D1E3A] to-[#070F1E] border-t border-slate-800/80 py-6 sm:py-7 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Subtle decorative ambient lights & top accent line */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-orange/40 to-transparent pointer-events-none" />
+        <div className="absolute -top-12 left-1/4 w-72 h-32 bg-brand-orange/5 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute -bottom-12 right-1/4 w-72 h-32 bg-brand-blue/10 rounded-full blur-2xl pointer-events-none" />
+
+        <div className="relative max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-5">
+          <div className="text-center md:text-left">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-orange/10 border border-brand-orange/30 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-brand-orange mb-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse" />
+              <span>Website Design &amp; Development</span>
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold font-heading text-white tracking-tight flex items-center justify-center md:justify-start gap-1.5 flex-wrap">
+              <span className="text-slate-200">Powered by</span>
+              <span className="text-white hover:text-brand-orange transition-colors">ASH Solutions</span>
+            </h3>
+            <p className="text-xs sm:text-[13px] text-slate-300 mt-1 max-w-xl leading-relaxed">
+              Engineered with modern web performance, bespoke design, and seamless logistics technology.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3 w-full sm:w-auto justify-center md:justify-end flex-shrink-0">
+            <a
+              href={ASH_SOLUTION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[#FF5500] via-brand-orange to-[#FF7A1A] hover:from-[#E64D00] hover:to-brand-orange text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-md shadow-brand-orange/25 hover:shadow-lg hover:shadow-brand-orange/40 border border-white/20 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] whitespace-nowrap"
+              title="Visit Official ASH Solutions Website"
+            >
+              <span>Visit ASH Solutions</span>
+              <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
           </div>
         </div>
       </div>

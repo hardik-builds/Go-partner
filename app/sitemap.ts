@@ -1,50 +1,50 @@
 import { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.go-partner.com';
   const lastModified = new Date();
 
   return [
     {
-      url: `${baseUrl}`,
+      url: `${SITE_URL}`,
       lastModified,
       changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/about`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services`,
+      url: `${SITE_URL}/services`,
       lastModified,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/contact`,
+      url: `${SITE_URL}/about`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/privacy-policy`,
+      url: `${SITE_URL}/contact`,
       lastModified,
-      changeFrequency: 'yearly',
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/privacy-policy`,
+      lastModified,
+      changeFrequency: 'monthly',
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/terms-and-conditions`,
+      url: `${SITE_URL}/terms-and-conditions`,
       lastModified,
-      changeFrequency: 'yearly',
+      changeFrequency: 'monthly',
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/refund`,
+      url: `${SITE_URL}/refund`,
       lastModified,
-      changeFrequency: 'yearly',
+      changeFrequency: 'monthly',
       priority: 0.5,
     },
   ];

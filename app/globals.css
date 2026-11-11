@@ -39,13 +39,76 @@ html {
   background: #FF6B00 !important;
 }
 
-/* Subtle Card Hover Effects */
+/* Shimmer Keyframe for Premium Skeleton Loading */
+@keyframes shimmerWave {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmerWave 1.8s infinite ease-in-out;
+}
+
+/* Premium Card Hover & Elevation Transitions */
 .card-hover-effect {
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.2s ease;
+  will-change: transform, box-shadow;
 }
 .card-hover-effect:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -3px rgba(14, 30, 56, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px -4px rgba(14, 30, 56, 0.12),
+    0 4px 10px -2px rgba(14, 30, 56, 0.04);
+}
+
+/* Subtle Interactive Button Press & Elevation */
+.btn-interactive {
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.15s ease,
+    color 0.15s ease;
+  will-change: transform;
+}
+.btn-interactive:hover {
+  transform: translateY(-1.5px);
+}
+.btn-interactive:active {
+  transform: translateY(0.5px) scale(0.985);
+}
+
+/* Smooth Form Input Focus Transition */
+.input-interactive {
+  transition: border-color 0.2s ease,
+    box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.2s ease;
+}
+
+/* Smooth Hardware-Accelerated Transforms */
+.will-change-transform {
+  will-change: transform, opacity;
 }
 
 /* Reduced motion preference */
@@ -55,5 +118,9 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .animate-shimmer::after {
+    animation: none !important;
+    display: none !important;
   }
 }

@@ -12,22 +12,63 @@ import {
   ArrowRight,
   CheckCircle,
 } from 'lucide-react';
+import { constructMetadata, getBreadcrumbSchema } from '@/lib/seo';
+import { SITE_URL } from '@/lib/site';
+import ScrollReveal from '@/components/ScrollReveal';
 
-export const metadata: Metadata = {
-  title: 'About Us | Building the Backbone of Modern Freight',
+export const metadata: Metadata = constructMetadata({
+  title: 'About Us | Goods Transportation & Freight Logistics Platform',
   description:
-    'Learn about GO-PARTNER, our mission to create a smarter freight ecosystem, core values, and dedicated carrier network connecting commerce across borders.',
-};
+    'Learn about GO-PARTNER, our mission to create a smarter freight ecosystem, verified commercial carrier network, and 0% commission direct trip model across Mumbai MMR and Maharashtra.',
+  path: '/about',
+  image: '/images/about-indian-team.jpg',
+  imageAlt: 'GO-PARTNER Team of Fleet Drivers and Logistics Partners',
+  keywords: [
+    'about GO-PARTNER',
+    'goods transportation company',
+    'commercial freight partner',
+    'logistics network Mumbai',
+    'Maharashtra freight transport',
+    'verified transport carriers',
+    'logistics platform India',
+    'Waris founder GO-PARTNER',
+  ],
+});
 
 export default function AboutPage() {
+  const breadcrumbJsonLd = getBreadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/about' },
+  ]);
+
+  const aboutPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'About GO-PARTNER Logistics',
+    url: `${SITE_URL}/about`,
+    description:
+      'Learn about GO-PARTNER, our leadership, core values, and dedicated commercial carrier network connecting commerce across Mumbai MMR and Maharashtra.',
+    mainEntity: {
+      '@id': `${SITE_URL}/#organization`,
+    },
+  };
+
   return (
     <div className="w-full flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageJsonLd) }}
+      />
       {/* 1. HERO SECTION (Matching go_partner_about_us_redesign.jpg) */}
       <section className="bg-gradient-to-b from-white via-slate-50 to-white py-12 lg:py-20 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Content (lg: 6 cols) */}
-            <div className="lg:col-span-6 space-y-5">
+            <ScrollReveal direction="up" delay={0.04} distance={14} className="lg:col-span-6 space-y-5">
               <span className="text-xs font-bold text-brand-orange uppercase tracking-widest block">
                 Our Story
               </span>
@@ -51,22 +92,22 @@ export default function AboutPage() {
               <div className="pt-4 flex flex-wrap gap-4">
                 <Link
                   href="/services"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-brand-orange hover:bg-brand-orange-hover text-white text-xs font-bold uppercase tracking-wider rounded-md transition-all shadow-xs"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-brand-orange hover:bg-brand-orange-hover text-white text-xs font-bold uppercase tracking-wider rounded-md transition-all shadow-xs btn-interactive"
                 >
                   <span>Our Logistics Services</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-slate-50 text-brand-navy border border-slate-300 text-xs font-bold uppercase tracking-wider rounded-md transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-slate-50 text-brand-navy border border-slate-300 text-xs font-bold uppercase tracking-wider rounded-md transition-colors btn-interactive"
                 >
                   <span>Connect With Us</span>
                 </Link>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Right Hero Image Card (lg: 6 cols) */}
-            <div className="lg:col-span-6">
+            <ScrollReveal direction="up" delay={0.14} distance={14} className="lg:col-span-6">
               <div className="relative rounded-lg overflow-hidden border border-slate-200 shadow-card bg-slate-900 group">
                 <div className="relative w-full h-[320px] sm:h-[400px]">
                   <Image
@@ -90,7 +131,7 @@ export default function AboutPage() {
                   </span>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -100,42 +141,46 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Mission Card */}
-            <div className="bg-white rounded-lg p-8 border border-slate-200 shadow-subtle flex flex-col justify-between card-hover-effect">
-              <div>
-                <div className="w-12 h-12 rounded-md bg-orange-50 text-brand-orange flex items-center justify-center mb-6">
-                  <Target className="w-6 h-6" />
+            <ScrollReveal delay={0.05} className="h-full">
+              <div className="bg-white rounded-lg p-8 border border-slate-200 shadow-subtle flex flex-col justify-between card-hover-effect h-full">
+                <div>
+                  <div className="w-12 h-12 rounded-md bg-orange-50 text-brand-orange flex items-center justify-center mb-6">
+                    <Target className="w-6 h-6" />
+                  </div>
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">
+                    Our Mission
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-bold text-brand-navy font-heading mb-3">
+                    Create a Smarter, Stronger Freight Ecosystem
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    To empower shippers, carriers, and partners with innovative technology, trusted
+                    relationships, and operational excellence that make logistics simpler, faster, and more reliable.
+                  </p>
                 </div>
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">
-                  Our Mission
-                </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-brand-navy font-heading mb-3">
-                  Create a Smarter, Stronger Freight Ecosystem
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  To empower shippers, carriers, and partners with innovative technology, trusted
-                  relationships, and operational excellence that make logistics simpler, faster, and more reliable.
-                </p>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Vision Card */}
-            <div className="bg-white rounded-lg p-8 border border-slate-200 shadow-subtle flex flex-col justify-between card-hover-effect">
-              <div>
-                <div className="w-12 h-12 rounded-md bg-blue-50 text-brand-blue flex items-center justify-center mb-6">
-                  <Eye className="w-6 h-6" />
+            <ScrollReveal delay={0.15} className="h-full">
+              <div className="bg-white rounded-lg p-8 border border-slate-200 shadow-subtle flex flex-col justify-between card-hover-effect h-full">
+                <div>
+                  <div className="w-12 h-12 rounded-md bg-blue-50 text-brand-blue flex items-center justify-center mb-6">
+                    <Eye className="w-6 h-6" />
+                  </div>
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">
+                    Our Vision
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-bold text-brand-navy font-heading mb-3">
+                    A More Connected World in Motion
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    To be the most trusted and innovative logistics partner, creating a more connected,
+                    efficient, and sustainable supply chain for generations to come.
+                  </p>
                 </div>
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">
-                  Our Vision
-                </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-brand-navy font-heading mb-3">
-                  A More Connected World in Motion
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  To be the most trusted and innovative logistics partner, creating a more connected,
-                  efficient, and sustainable supply chain for generations to come.
-                </p>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -150,11 +195,11 @@ export default function AboutPage() {
                 <div className="relative aspect-[3/4] w-full rounded-lg overflow-hidden bg-slate-100 border border-slate-100">
                   <Image
                     src="/images/founder-waris.jpg"
-                    alt="Waris, Founder of GO-PARTNER"
+                    alt="Waris, Founder of GO-PARTNER Logistics"
                     fill
                     sizes="(max-width: 768px) 100vw, 360px"
                     className="object-cover object-[center_20%]"
-                    priority
+                    loading="lazy"
                   />
                 </div>
                 <div className="pt-4 pb-1 text-center">

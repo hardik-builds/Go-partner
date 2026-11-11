@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { trackWhatsAppClick } from '@/lib/analytics';
 
 // Official WhatsApp helpline
 const WHATSAPP_NUMBER = '919820011223';
@@ -18,6 +19,7 @@ export default function WhatsAppFloat() {
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
       className="fixed bottom-20 right-8 sm:right-10 z-50 group flex items-center gap-3"
+      onClick={() => trackWhatsAppClick('floating_button')}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >

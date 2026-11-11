@@ -1,16 +1,24 @@
 import type { Metadata } from 'next';
+import { constructMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Contact Us',
+export const metadata: Metadata = constructMetadata({
+  title: 'Contact Us | Logistics Enquiries & Freight Support',
   description:
-    'Get in touch with the GO-PARTNER logistics team. Reach us by phone, email, or WhatsApp for freight enquiries, shipping quotes, and business partnerships.',
-  openGraph: {
-    title: 'Contact GO-PARTNER Logistics',
-    description:
-      'Reach out to GO-PARTNER for freight quotes, service enquiries, and partnerships. Our team is available Mon-Sat during business hours.',
-    images: [{ url: '/images/indian-tata-ace-tempo.jpg', width: 1200, height: 630, alt: 'Contact GO-PARTNER' }],
-  },
-};
+    'Contact the GO-PARTNER logistics team for commercial goods transportation, freight bookings, driver-partner enquiries, and customer support. Call +91 98200 11223 or connect via WhatsApp.',
+  path: '/contact',
+  image: '/images/indian-tata-ace-tempo.jpg',
+  imageAlt: 'Contact GO-PARTNER Commercial Logistics Operations',
+  keywords: [
+    'contact GO-PARTNER',
+    'goods transportation contact',
+    'freight logistics enquiry',
+    'commercial truck booking phone',
+    'Mumbai logistics helpline',
+    'transport partner support',
+    'WhatsApp goods delivery booking',
+    'commercial freight quote request',
+  ],
+});
 
 export default function ContactLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;

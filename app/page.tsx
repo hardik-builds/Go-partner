@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import {
   ShieldCheck,
   Truck,
@@ -17,17 +18,48 @@ import {
   FileCheck,
   Smartphone,
 } from 'lucide-react';
-import { GOOGLE_PLAY_URL } from '@/lib/site';
+import { GOOGLE_PLAY_URL, SITE_URL } from '@/lib/site';
+import { constructMetadata, getServicesSchema } from '@/lib/seo';
+import ScrollReveal from '@/components/ScrollReveal';
+
+export const metadata: Metadata = constructMetadata({
+  title: 'GO-PARTNER | Reliable Goods Transportation & Freight Logistics',
+  description:
+    'Book reliable goods transportation and freight logistics with GO-PARTNER. Verified commercial carrier network, Full Truckload (FTL), Part Truckload (LTL), reefer cold chain, and warehousing across Mumbai MMR and Maharashtra.',
+  path: '/',
+  image: '/images/hero-indian-partner.jpg',
+  imageAlt: 'GO-PARTNER Commercial Transport Fleet and Driver Partner',
+  keywords: [
+    'goods transportation services',
+    'freight logistics services',
+    'commercial cargo transportation',
+    'business goods delivery',
+    'full truckload transportation',
+    'less than truckload services',
+    'part truckload PTL',
+    'warehousing and logistics',
+    'Tata Ace goods transport',
+    'Mumbai freight transport',
+    'Maharashtra logistics carrier',
+    'GO-PARTNER',
+  ],
+});
 
 export default function HomePage() {
+  const servicesJsonLd = getServicesSchema();
+
   return (
     <div className="w-full flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
+      />
       {/* 1. HERO SECTION */}
       <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white pt-8 pb-16 lg:py-20 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             {/* Left Content (lg: 7 cols) */}
-            <div className="lg:col-span-6 xl:col-span-6 space-y-6">
+            <ScrollReveal direction="up" delay={0.04} distance={14} className="lg:col-span-6 xl:col-span-6 space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 border border-slate-200 rounded-md text-[11px] font-bold uppercase tracking-widest text-slate-700">
                 <span>People. Vehicles. Possibilities.</span>
               </div>
@@ -46,7 +78,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
                 <Link
                   href="/services"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-brand-orange hover:bg-brand-orange-hover text-white text-sm font-bold uppercase tracking-wider rounded-md shadow-xs transition-all hover:shadow-md"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-brand-orange hover:bg-brand-orange-hover text-white text-sm font-bold uppercase tracking-wider rounded-md shadow-xs transition-all hover:shadow-md btn-interactive"
                 >
                   <span>Explore Our Services</span>
                   <ArrowRight className="w-4 h-4" />
@@ -56,7 +88,7 @@ export default function HomePage() {
                   href={GOOGLE_PLAY_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white hover:bg-slate-50 text-brand-navy border border-slate-300 text-sm font-bold uppercase tracking-wider rounded-md shadow-xs transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white hover:bg-slate-50 text-brand-navy border border-slate-300 text-sm font-bold uppercase tracking-wider rounded-md shadow-xs transition-colors btn-interactive"
                 >
                   <span>Book in the App</span>
                 </a>
@@ -100,10 +132,10 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Right Hero Image Card (lg: 6 cols) */}
-            <div className="lg:col-span-6 xl:col-span-6 relative">
+            <ScrollReveal direction="up" delay={0.14} distance={14} className="lg:col-span-6 xl:col-span-6 relative">
               <div className="relative rounded-lg overflow-hidden border border-slate-200/80 shadow-card bg-slate-900 group">
                 {/* Authentic Indian Commercial Driver & Fleet Image */}
                 <div className="relative w-full h-[360px] sm:h-[440px]">
@@ -148,7 +180,7 @@ export default function HomePage() {
                   </Link>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -260,35 +292,39 @@ export default function HomePage() {
       {/* 3. SERVICES OVERVIEW (Matching Reference Cards) */}
       <section className="py-16 lg:py-20 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
-            <div>
-              <span className="text-xs font-bold text-brand-orange uppercase tracking-widest block mb-1">
-                Our Services
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
-                Freight Solutions for Every Need
-              </h2>
+          <ScrollReveal direction="up" delay={0.05}>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+              <div>
+                <span className="text-xs font-bold text-brand-orange uppercase tracking-widest block mb-1">
+                  Our Services
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy font-heading">
+                  Freight Solutions for Every Need
+                </h2>
+              </div>
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-blue hover:text-brand-orange uppercase tracking-wider transition-colors"
+              >
+                <span>View All Solutions</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-blue hover:text-brand-orange uppercase tracking-wider transition-colors"
-            >
-              <span>View All Solutions</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+          </ScrollReveal>
 
           {/* Service Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <ScrollReveal direction="up" delay={0.12}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Card 1: FTL */}
             <div className="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-subtle flex flex-col card-hover-effect">
               <div className="relative h-48 w-full bg-slate-100">
                 <Image
                   src="/images/indian-tata-truck-ftl.jpg"
-                  alt="Full Truckload (FTL) Multi-Axle Freight Truck"
+                  alt="Full Truckload (FTL) Multi-Axle Freight Truck - GO-PARTNER"
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover"
+                  loading="lazy"
                 />
               </div>
               <div className="p-6 flex flex-col flex-grow justify-between">
@@ -327,10 +363,11 @@ export default function HomePage() {
               <div className="relative h-48 w-full bg-slate-100">
                 <Image
                   src="/images/indian-tata-ace-tempo.jpg"
-                  alt="Part Truckload (PTL) Tata Ace Chhota Hathi & Pickup Tempos"
+                  alt="Part Truckload (PTL) Tata Ace Chhota Hathi & Pickup Tempos - GO-PARTNER"
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover"
+                  loading="lazy"
                 />
               </div>
               <div className="p-6 flex flex-col flex-grow justify-between">
@@ -369,10 +406,11 @@ export default function HomePage() {
               <div className="relative h-48 w-full bg-slate-100">
                 <Image
                   src="/images/service-warehousing.jpg"
-                  alt="Dedicated Logistics Warehousing"
+                  alt="Dedicated Logistics Warehousing and Inventory Staging Hub - GO-PARTNER"
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover"
+                  loading="lazy"
                 />
               </div>
               <div className="p-6 flex flex-col flex-grow justify-between">
@@ -406,6 +444,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -479,6 +518,7 @@ export default function HomePage() {
                     fill
                     sizes="(max-width: 768px) 100vw, 40vw"
                     className="object-cover object-center"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
                 </div>
@@ -509,21 +549,24 @@ export default function HomePage() {
       {/* 4.5 MOBILE APP SHOWCASE (Real GO-PARTNER App Experience) */}
       <section className="py-16 lg:py-24 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-bold text-brand-orange uppercase tracking-widest block mb-2">
-              Next-Generation Technology
-            </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-navy font-heading tracking-tight">
-              Inside the GO-PARTNER Mobile Platform
-            </h2>
-            <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
-              Designed from the ground up for Mumbai MMR and Maharashtra logistics. Transparent pricing,
-              zero commission deductions, instant radar dispatch, and strict cargo safety compliance.
-            </p>
-          </div>
+          <ScrollReveal direction="up" delay={0.05}>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <span className="text-xs font-bold text-brand-orange uppercase tracking-widest block mb-2">
+                Next-Generation Technology
+              </span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-navy font-heading tracking-tight">
+                Inside the GO-PARTNER Mobile Platform
+              </h2>
+              <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
+                Designed from the ground up for Mumbai MMR and Maharashtra logistics. Transparent pricing,
+                zero commission deductions, instant radar dispatch, and strict cargo safety compliance.
+              </p>
+            </div>
+          </ScrollReveal>
 
           {/* 4 App Feature Columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          <ScrollReveal direction="up" delay={0.12}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {/* Feature 1: 0% Commission Direct Trips */}
             <div className="bg-slate-50 rounded-lg border border-slate-200 overflow-hidden flex flex-col justify-between shadow-subtle hover:border-slate-300 transition-colors h-full">
               <div className="p-5 flex flex-col flex-grow">
@@ -544,6 +587,7 @@ export default function HomePage() {
                   fill
                   sizes="(max-width: 768px) 100vw, 25vw"
                   className="object-cover object-top"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -568,6 +612,7 @@ export default function HomePage() {
                   fill
                   sizes="(max-width: 768px) 100vw, 25vw"
                   className="object-cover object-center"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -592,6 +637,7 @@ export default function HomePage() {
                   fill
                   sizes="(max-width: 768px) 100vw, 25vw"
                   className="object-cover object-center"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -616,10 +662,12 @@ export default function HomePage() {
                   fill
                   sizes="(max-width: 768px) 100vw, 25vw"
                   className="object-cover object-top"
+                  loading="lazy"
                 />
               </div>
             </div>
           </div>
+          </ScrollReveal>
 
           {/* Bottom App Banner Bar */}
           <div className="mt-12 p-6 rounded-lg bg-brand-navy text-white flex flex-col md:flex-row items-center justify-between gap-6">

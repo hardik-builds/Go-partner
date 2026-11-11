@@ -20,9 +20,28 @@ import {
   Shield,
   FileText,
 } from 'lucide-react';
+import { getBreadcrumbSchema } from '@/lib/seo';
+import { SITE_URL } from '@/lib/site';
 
 export default function RefundPage() {
   const [downloadSuccess, setDownloadSuccess] = useState(false);
+
+  const breadcrumbJsonLd = getBreadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Cancellation & Refunds', path: '/refund' },
+  ]);
+
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'GO-PARTNER Cancellation and Refund Policy',
+    url: `${SITE_URL}/refund`,
+    description:
+      'GO-PARTNER Cancellation and Refund Policy, driver fuel compensation rules, and Razorpay settlement timelines.',
+    publisher: {
+      '@id': `${SITE_URL}/#organization`,
+    },
+  };
 
   const handleDownload = () => {
     const content = `GO PARTNER - CANCELLATION & REFUND POLICY
@@ -72,6 +91,15 @@ Jurisdiction: Mumbai, Maharashtra, India`;
 
   return (
     <div className="w-full flex flex-col bg-brand-light-bg/40">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+
       {/* 1. HERO HEADER */}
       <section className="bg-white border-b border-slate-200 py-10 lg:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,16 +108,16 @@ Jurisdiction: Mumbai, Maharashtra, India`;
               Home
             </Link>
             <span>/</span>
-            <span className="text-slate-800 font-medium">Legal</span>
+            <span className="text-slate-800 font-medium">Cancellation &amp; Refunds</span>
           </nav>
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
               <h1 className="text-3xl sm:text-4xl font-black text-brand-navy font-heading tracking-tight">
-                Legal &amp; Compliance
+                Cancellation &amp; Refund Policy
               </h1>
               <p className="text-sm sm:text-base text-slate-600 mt-1">
-                Transparency builds stronger partnerships.
+                Transparency builds stronger partnerships. Clear trip cancellation guidelines &amp; refund timelines.
               </p>
             </div>
 

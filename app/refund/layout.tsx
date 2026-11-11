@@ -1,16 +1,21 @@
 import type { Metadata } from 'next';
+import { constructMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Cancellation & Refund Policy',
+export const metadata: Metadata = constructMetadata({
+  title: 'Cancellation & Refund Policy | Trip Terms & Settlements',
   description:
-    'Review GO PARTNER Cancellation and Refund Policy. Understand cancellation windows, driver fuel compensation fees, and Razorpay / GO Wallet refund timelines.',
-  openGraph: {
-    title: 'Cancellation & Refund Policy | GO PARTNER',
-    description:
-      'Clear, transparent cancellation guidelines for customers and driver-partners across Mumbai MMR. Learn about refund processing timelines via Razorpay.',
-    images: [{ url: '/images/indian-fleet-hero.jpg', width: 1200, height: 630, alt: 'GO PARTNER Logistics' }],
-  },
-};
+    'Review the GO-PARTNER Cancellation and Refund Policy. Understand transparent zero-fee cancellation stages, nominal driver fuel compensation rules, and Razorpay refund timelines.',
+  path: '/refund',
+  image: '/images/hero-indian-partner.jpg',
+  imageAlt: 'GO-PARTNER Cancellation and Refund Policy',
+  keywords: [
+    'GO-PARTNER refund policy',
+    'goods transport cancellation rules',
+    'freight booking refund timelines',
+    'driver fuel compensation policy',
+    'Razorpay logistics refund process',
+  ],
+});
 
 export default function RefundLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
