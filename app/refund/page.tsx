@@ -66,8 +66,8 @@ URL: https://gopartner.in/refund
 
 4. GRIEVANCE & SUPPORT CONTACT
 Compliance & Grievance Desk, GO PARTNER
-Email: support@gopartner.in / grievance@gopartner.in
-Helpline: +91 98200 11223
+Email: contact@gopartnerlogistics.in
+Helpline: +91 86527 68171
 Jurisdiction: Mumbai, Maharashtra, India`;
 
     const element = document.createElement('a');
@@ -484,21 +484,15 @@ Jurisdiction: Mumbai, Maharashtra, India`;
                   <p className="text-slate-700 font-semibold">GO PARTNER Logistics Network</p>
                   <div className="pt-2 space-y-1.5">
                     <p>
-                      <span className="text-slate-500 font-medium">Customer Support: </span>
-                      <a href="mailto:support@gopartner.in" className="text-brand-orange underline underline-offset-2">
-                        support@gopartner.in
-                      </a>
-                    </p>
-                    <p>
-                      <span className="text-slate-500 font-medium">Grievance Officer: </span>
-                      <a href="mailto:grievance@gopartner.in" className="text-brand-orange underline underline-offset-2">
-                        grievance@gopartner.in
+                      <span className="text-slate-500 font-medium">Email: </span>
+                      <a href="mailto:contact@gopartnerlogistics.in" className="text-brand-orange underline underline-offset-2">
+                        contact@gopartnerlogistics.in
                       </a>
                     </p>
                     <p>
                       <span className="text-slate-500 font-medium">Helpline: </span>
-                      <a href="tel:+919820011223" className="text-brand-navy font-semibold">
-                        +91 98200 11223
+                      <a href="tel:+918652768171" className="text-brand-navy font-semibold">
+                        +91 86527 68171
                       </a>
                     </p>
                     <p>

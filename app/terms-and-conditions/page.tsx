@@ -392,15 +392,15 @@ Visit https://gopartner.in/terms for the latest version of this document.`;
                 <div className="bg-slate-50 p-4 rounded-md border border-slate-200 text-xs space-y-1.5">
                   <p className="font-bold text-brand-navy">GO PARTNER Legal &amp; Operations</p>
                   <p>
-                    <span className="text-slate-500 font-medium">Support: </span>
-                    <a href="mailto:support@gopartner.in" className="text-brand-orange underline underline-offset-2">
-                      support@gopartner.in
+                    <span className="text-slate-500 font-medium">Email: </span>
+                    <a href="mailto:contact@gopartnerlogistics.in" className="text-brand-orange underline underline-offset-2">
+                      contact@gopartnerlogistics.in
                     </a>
                   </p>
                   <p>
                     <span className="text-slate-500 font-medium">Helpline: </span>
-                    <a href="tel:+919820011223" className="text-brand-navy font-semibold">
-                      +91 98200 11223
+                    <a href="tel:+918652768171" className="text-brand-navy font-semibold">
+                      +91 86527 68171
                     </a>
                   </p>
                   <p>

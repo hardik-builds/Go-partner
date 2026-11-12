@@ -18,13 +18,13 @@ export const SITE_URL =
     ? process.env.NEXT_PUBLIC_SITE_URL
     : 'https://gopartner.in';
 
-export const CONTACT_PHONE = '+91 98200 11223';
-export const CONTACT_PHONE_RAW = '+919820011223';
-export const CONTACT_EMAIL = 'support@gopartner.in';
-export const GRIEVANCE_EMAIL = 'grievance@gopartner.in';
+export const CONTACT_PHONE = '+91 86527 68171';
+export const CONTACT_PHONE_RAW = '+918652768171';
+export const CONTACT_EMAIL = 'contact@gopartnerlogistics.in';
+export const GRIEVANCE_EMAIL = 'contact@gopartnerlogistics.in';
 
 export const WHATSAPP_URL =
-  'https://wa.me/919820011223?text=Hello%20GO%20PARTNER%20Logistics%20Team';
+  'https://wa.me/918652768171?text=Hello%20GO%20PARTNER%20Logistics%20Team';
 
 export const GOOGLE_PLAY_URL =
   'https://play.google.com/store/search?q=GO-PARTNER&c=apps';

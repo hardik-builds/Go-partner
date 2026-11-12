@@ -13,11 +13,6 @@ import {
   Loader2,
   ExternalLink,
 } from 'lucide-react';
-import { trackEnquirySubmission, trackWhatsAppClick, trackPhoneCall } from '@/lib/analytics';
-import { getBreadcrumbSchema } from '@/lib/seo';
-import { SITE_URL, CONTACT_PHONE, CONTACT_EMAIL, BUSINESS_ADDRESS } from '@/lib/site';
-import ScrollReveal from '@/components/ScrollReveal';
-import { useDebounce } from '@/lib/hooks/useDebounce';
 
 export default function ContactPage() {
   const breadcrumbJsonLd = getBreadcrumbSchema([
@@ -234,10 +229,9 @@ export default function ContactPage() {
                     <h3 className="text-sm font-bold text-brand-navy">Phone Support</h3>
                     <a
                       href="tel:+919820011223"
-                      onClick={() => trackPhoneCall('contact_page')}
                       className="text-xs font-semibold text-brand-orange hover:underline block mt-1"
                     >
-                      +91 98200 11223
+                      {CONTACT_PHONE}
                     </a>
                   </div>
                   <p className="text-[11px] text-slate-400 mt-2">Mon - Sat, 8:00 AM - 8:00 PM | 24/7 Dispatch</p>
@@ -251,10 +245,10 @@ export default function ContactPage() {
                     </div>
                     <h3 className="text-sm font-bold text-brand-navy">Email Us</h3>
                     <a
-                      href="mailto:support@gopartner.in"
+                      href={`mailto:${CONTACT_EMAIL}`}
                       className="text-xs font-semibold text-brand-navy hover:text-brand-orange block mt-1"
                     >
-                      support@gopartner.in
+                      {CONTACT_EMAIL}
                     </a>
                   </div>
                   <p className="text-[11px] text-slate-400 mt-2">We typically respond within 24 hours.</p>
@@ -285,7 +279,7 @@ export default function ContactPage() {
                   </div>
                   <div className="mt-3">
                     <a
-                      href="https://wa.me/919820011223?text=Hello%20GO%20PARTNER%20Logistics%20Team"
+                      href={WHATSAPP_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => trackWhatsAppClick('contact_page')}
@@ -419,7 +413,7 @@ export default function ContactPage() {
                           id="phoneNumber"
                           name="phoneNumber"
                           required
-                          placeholder="+91 98200 11223"
+                          placeholder="+91 86527 68171"
                           value={formData.phoneNumber}
                           onChange={(e) =>
                             setFormData({ ...formData, phoneNumber: e.target.value })

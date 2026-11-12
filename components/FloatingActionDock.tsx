@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowUp } from 'lucide-react';
 
-const WHATSAPP_NUMBER = '919820011223';
+const WHATSAPP_NUMBER = '918652768171';
 const WHATSAPP_MESSAGE = 'Hello GO PARTNER! I would like to enquire about goods and freight transportation services.';
 
 export default function FloatingActionDock() {

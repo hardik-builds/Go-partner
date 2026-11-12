@@ -280,7 +280,7 @@ export default function QuoteModal({ isOpen, onClose, initialService }: QuoteMod
                   <input
                     type="tel"
                     required
-                    placeholder="+91 98200 11223"
+                    placeholder="+91 86527 68171"
                     value={formData.phoneNumber}
                     onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
                     className="w-full px-3 py-2 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue"

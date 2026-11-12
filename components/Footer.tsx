@@ -4,7 +4,14 @@ import React from 'react';
 import Link from 'next/link';
 import { Phone, Mail, MapPin, MessageSquare, ArrowUpRight } from 'lucide-react';
 import Logo from './Logo';
-import { GOOGLE_PLAY_URL, ASH_SOLUTION_URL } from '@/lib/site';
+import {
+  GOOGLE_PLAY_URL,
+  ASH_SOLUTION_URL,
+  CONTACT_PHONE,
+  CONTACT_PHONE_RAW,
+  CONTACT_EMAIL,
+  WHATSAPP_URL,
+} from '@/lib/site';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -106,10 +113,10 @@ export default function Footer() {
                 <div>
                   <span className="text-xs text-slate-400 block">Dispatch & Helpline</span>
                   <a
-                    href="tel:+919820011223"
+                    href={`tel:${CONTACT_PHONE_RAW}`}
                     className="hover:text-brand-orange font-medium text-white transition-colors"
                   >
-                    +91 98200 11223
+                    {CONTACT_PHONE}
                   </a>
                 </div>
               </li>
@@ -118,10 +125,10 @@ export default function Footer() {
                 <div>
                   <span className="text-xs text-slate-400 block">Business & Support</span>
                   <a
-                    href="mailto:support@gopartner.in"
+                    href={`mailto:${CONTACT_EMAIL}`}
                     className="hover:text-brand-orange transition-colors"
                   >
-                    support@gopartner.in
+                    {CONTACT_EMAIL}
                   </a>
                 </div>
               </li>
@@ -130,7 +137,7 @@ export default function Footer() {
                 <div>
                   <span className="text-xs text-slate-400 block">WhatsApp Direct Chat</span>
                   <a
-                    href="https://wa.me/919820011223?text=Hello%20GO%20PARTNER%20Support%20Team"
+                    href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-emerald-300 inline-flex items-center gap-1 font-medium transition-colors text-emerald-400"
@@ -228,7 +235,7 @@ export default function Footer() {
 
                 {/* WhatsApp */}
                 <a
-                  href="https://wa.me/919820011223"
+                  href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-8 h-8 rounded-md bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-300 hover:text-white transition-all duration-200 hover:-translate-y-1 hover:shadow-md"

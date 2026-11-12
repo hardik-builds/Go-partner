@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { trackWhatsAppClick } from '@/lib/analytics';
 
 // Official WhatsApp helpline
-const WHATSAPP_NUMBER = '919820011223';
+const WHATSAPP_NUMBER = '918652768171';
 const WHATSAPP_MESSAGE = 'Hello GO PARTNER! I would like to enquire about goods and freight transportation services.';
 
 export default function WhatsAppFloat() {
